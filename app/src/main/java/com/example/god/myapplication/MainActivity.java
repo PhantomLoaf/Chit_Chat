@@ -11,34 +11,45 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String msg = "Android : ";
-
+    /**
+     * This is this activity's 'constructor' as they should say in Java
+     * @param savedInstanceState - saved state of the application. Non-persistent, dynamic data that
+     * is passed to onCreate() so that you may recreate the activity if it is destroyed
+     * in such situations such as a screen orientation change.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        Log.d(msg, "The onCreate() event");
+        /* Here we do our activity construction
+        /* Obviously.... lol
+         */
+        setContentView(R.layout.activity_main);
     }
 
+    /**
+     * In this method, you can inflate your menu resource (defined in XML) into the Menu provided in the callback
+     * @param menu - menu to be inflated
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        Log.d(msg, "The onCreateOptionsMenu() event");
-
         return true;
     }
 
+    /**
+     * When the user selects an item from the options menu (including action items in the action bar),
+     * the system calls your activity's onOptionsItemSelected() method. This method passes the MenuItem selected
+     * @param item - MenuItem selected
+     * @return item selected
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-
-        Log.d(msg, "The onOptionsItemSelected() event");
-
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement

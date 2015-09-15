@@ -6,9 +6,18 @@ import android.os.IBinder;
 import android.widget.Toast;
 
 public class MyService extends Service {
+
+    /**
+     * Constructor
+     */
     public MyService() {
     }
 
+    /**
+     * Allows a client to maintain a persistent connection to this service
+     * @param intent
+     * @return
+     */
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
@@ -18,6 +27,13 @@ public class MyService extends Service {
         return null;
     }
 
+    /**
+     * Used to do run the service
+     * @param intent
+     * @param flags
+     * @param startId
+     * @return
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
@@ -29,6 +45,9 @@ public class MyService extends Service {
         return START_STICKY;
     }
 
+    /**
+     * Used to deallocate anything that may need to be destroyed when the service is stopped
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
