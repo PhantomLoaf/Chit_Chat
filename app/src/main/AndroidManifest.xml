@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.god.myapplication" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+
+                <!-- If either one of these is missing
+                     The app icon will not show on home screen -->
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true" >
+
+            <!-- When device is booted, it will be intercepted by
+            BroadcastReceiver MyReceiver and implemented logic inside onReceive()
+            will be executed -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+
+            <!-- Custom Intent implemented
+                This intent is used as a broadcast for the broadcast receiver
+                Notice it is an action -->
+            <intent-filter>
+                <action android:name="com.example.god.myapplication.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
